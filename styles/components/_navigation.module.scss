@@ -1,0 +1,127 @@
+@use '../abstacts/colors';
+@use '../abstacts/mixins';
+@use '../abstacts/variables';
+
+.nav {
+  @include mixins.flex;
+  box-shadow: 0px 2px 12px 1px colors.$dark-violet;
+  background-color: colors.$white;
+  font-family: variables.$karla-regular;
+  padding: 0 variables.$lg-space;
+  position: fixed;
+  width: 100vw;
+  height: variables.$nav_height;
+  z-index: 6;
+
+  .logo {
+    @include mixins.nav_logo;
+    width: fit-content;
+  }
+
+  .nav_menu {
+    @include mixins.flex;
+    
+    ul {
+      @include mixins.flex;
+      gap: 0.6rem;
+      color: colors.$dark-grayish-violet;
+
+      li {
+        @include mixins.font-style-list;
+        list-style: none;
+        padding: 0.8rem 0.4rem;
+
+        &:hover {
+          @include mixins.hover($color: colors.$very-dark-violet);
+        }
+      }
+
+      :last-child {
+        @include mixins.button(colors.$dark-violet, colors.$dark-violet);
+
+        &:hover {
+          @include mixins.hover($bg: colors.$very-dark-violet, $color: colors.$very-light-gray);
+        }
+      }
+    }
+
+
+    img {
+      display: none;
+    }
+  }
+
+  .display_none {
+    display: none;
+  }
+
+  .display_block {
+    display: block;
+  }
+}
+
+@media screen and (max-width: variables.$media-query-md) {
+  .nav {
+    padding-inline: variables.$md-space;
+    height: variables.$nav_height;
+    gap: 0;
+
+    .nav_menu {
+      position: absolute;
+      width: 100%;
+      top: variables.$nav_height;
+      left: 0;
+      gap: 0;
+      ul {
+        @include mixins.flex(column);
+        gap: 10px;
+        padding: 1rem variables.$md-space;
+        color: colors.$white;
+        background-color: colors.$very-dark-violet;
+
+        li {
+          padding: 0.75rem 0;
+          &:hover {
+            @include mixins.hover($color: colors.$dark-grayish-violet)
+          }
+        }
+
+        :last-child {
+          border: 2px solid white;
+          width: 100%;
+          color: unset;
+          text-align: center;
+
+          &:hover {
+            @include mixins.hover($bg: colors.$very-light-gray, $color: colors.$very-dark-violet);
+          }
+        }
+      }
+
+      img {
+        padding-top: 2rem;
+        display: block;
+        width: 100%;
+        background-color: colors.$very-dark-violet;
+      }
+    }
+
+    img {
+      display: block;
+    }
+  }
+}
+
+@media screen and (max-width: variables.$media-query-sm) {
+  .nav {
+    padding-inline: variables.$sm-space;
+    gap: 1rem;
+    // background-color: red;
+    .nav_menu {
+      ul {
+        padding: 1rem variables.$sm-space;
+      }
+    }
+  }
+  
+}

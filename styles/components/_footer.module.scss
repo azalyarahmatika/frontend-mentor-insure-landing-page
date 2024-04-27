@@ -1,0 +1,89 @@
+@use '../abstacts/colors';
+@use '../abstacts/mixins';
+@use '../abstacts/variables';
+
+.footer {
+  padding: 2rem variables.$lg-space;
+  background: colors.$very-light-gray;
+  position: relative;
+  z-index: 5;
+
+  .footer_top {
+    @include mixins.flex;
+    padding-block: 2rem;
+
+    &:first-child {
+      @include mixins.nav_logo;
+    }
+    
+    .footer_top_pattern {
+      position: absolute;
+      top:0;
+      left: 0;
+      z-index: -2;
+    }
+
+    .footer_top_contact {
+      @include mixins.flex;
+      gap: 1rem;
+
+      img {
+        width: 22px;
+        height: 22px;
+
+        &:hover {
+          filter: brightness(0) saturate(100%) invert(13%) sepia(7%) saturate(3522%) hue-rotate(213deg) brightness(97%) contrast(91%);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .footer_bottom {
+    @include mixins.flex;
+    padding-block: 2rem;
+    border-top: 1px solid colors.$dark-grayish-violet;
+    ul {
+      li {
+        @include mixins.font-style-list;
+        list-style: none;
+        line-height: 1.8rem;
+
+        &:first-child {
+          color: colors.$dark-grayish-violet;
+          margin-bottom: 1.2rem;
+        }
+        
+        &:not(:first-child):hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      } 
+      
+    }
+  } 
+}
+
+@media screen and (max-width: variables.$media-query-md) {
+  .footer {
+    padding: 2rem variables.$md-space;
+  }
+}
+
+@media screen and (max-width: variables.$media-query-sm) {
+  .footer {
+    padding: 2rem variables.$sm-space;
+    @include mixins.flex(column);
+
+    .footer_top {
+      @include mixins.flex(column);
+      margin-bottom: 50px;
+    }
+
+    .footer_bottom {
+      @include mixins.flex(column);
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

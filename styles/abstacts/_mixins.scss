@@ -1,0 +1,48 @@
+@use './colors';
+@use './variables';
+
+
+@mixin flex($direction: row) {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: $direction;
+}
+
+@mixin hover($bg: transparent, $color: colors.$white) {
+  cursor: pointer;
+  background-color: $bg;
+  color: $color;
+  cursor: pointer;
+}
+
+@mixin nav_logo($height: 1rem) {
+  height: $height;
+  width: auto;
+}
+
+@mixin button($border: colors.$white, $color: colors.$white) {
+  border: 2px solid $border;
+  margin: 12px 0;
+  padding: 0.75rem 1rem;
+  color: $color;
+  background: transparent;
+  width: 130px;
+  text-align: center;
+}
+
+@mixin font-style-list {
+  font-family: variables.$karla-regular;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+@mixin horizontal-line($color: colors.$white) {
+  content: '';
+  border-top: 1px solid $color;
+  width: 130px;
+  display: block;
+  margin-bottom: 40px; 
+}

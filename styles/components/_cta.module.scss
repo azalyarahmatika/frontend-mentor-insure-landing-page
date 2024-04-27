@@ -1,0 +1,62 @@
+@use '../abstacts/colors';
+@use '../abstacts/mixins';
+@use '../abstacts/variables';
+
+.cta_wrapper {
+  @include mixins.flex;
+  background: colors.$dark-violet;
+  padding: 3.5rem;
+  margin-inline: variables.$lg-space;
+  color: colors.$white;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  margin-bottom: variables.$lg-space;
+
+  h2 {
+    font-family: variables.$dm-serif;
+    font-size: 3rem;
+    font-weight: 300;
+    flex-basis: 50%;
+    line-height: 3rem;
+  }
+  
+  img { 
+    position: absolute;
+    top:0;
+    right: 0;
+  }
+
+  button {
+    @include mixins.font-style-list;
+    @include mixins.button;
+    width: auto;
+    z-index: 10;
+    
+    &:hover {
+      @include mixins.hover($bg: colors.$white, $color: colors.$very-dark-violet);
+    }
+  }
+  
+}
+
+@media screen and (max-width: variables.$media-query-md) {
+  .cta_wrapper {
+    margin-inline: variables.$md-space;
+    flex-direction: column;
+    text-align: center;
+    padding: 2.8rem;
+  }
+}
+
+@media screen and (max-width: variables.$media-query-sm) {
+  .cta_wrapper {
+    padding: 2.5rem 1.5rem;
+    margin-inline: variables.$sm-space;
+    
+    h2 {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
+  }
+}
